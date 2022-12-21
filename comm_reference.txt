@@ -1,0 +1,135 @@
+    1  oc whoami 
+    2  ssh root@utility 
+    3  ll
+    4  cat kubeadmin-password 
+    5  cat kubeconfig | grep server
+    6  cat kubeadmin-password 
+    7  mkdir work 
+    8  cd work/
+    9  pwd
+   10  ll
+   11  vim my_pass.txt 
+   12  source  my_pass.txt 
+   13  cat my_pass.txt 
+   14  oc login -u kubeadmin -p ${_kube_pass} $_api_url 
+   15  source my_pass.txt 
+   16  oc login -u kubeadmin -p ${_kube_pass} $_api_url 
+   17  cat ../kubeadmin-password 
+   18  ll
+   19  cat my_pass.txt 
+   20  vim my_pass.txt 
+   21  source my_pass.txt 
+   22  oc login -u kubeadmin -p ${_kube_pass} $_api_url 
+   23  oc whoami 
+   24  oc whoami --show-console 
+   25  oc get clusterversion 
+   26  oc whoami 
+   27  oc get  nodes
+   28  oc debug host/master01 
+   29  oc debug --help |less
+   30  oc debug node/master01 
+   31  pwd
+   32  ll
+   33  oc get pods
+   34  oc get nodes
+   35  oc debug node/master02
+   36  oc get authentication -n openshift 
+   37  oc projects | grep auth
+   38  oc get pods -n openshift-oauth-apiserver
+   39  oc get pods -n openshift-oauth-apiserver -o wide 
+   40  oc projects | grep auth
+   41  oc get pods -n openshift-authentication -o wide 
+   42  oc projects | grep kube
+   43  oc get pods -n openshift-kube-apiserver
+   44  oc projects |less
+   45  oc get  pods -n openshift-kube
+   46  oc projects |less
+   47  oc get pods -n openshift-etcd
+   48  oc logs -u kubelet 
+   49  oc adm node-logs -u crio master01 |less
+   50  oc adm node-logs -u crio |less
+   51  oc adm node-logs -u crio master02|less
+   52  oc adm node-logs -u kubelet  master02|less
+   53  oc adm node-logs  master02|less
+   54  cat /etc/redhat-release 
+   55  oc debug node/master02
+   56  nslookup cprakash.apps.ocp4.example.com 
+   57  nslookup skdjfdsjkfhsdkj.apps.ocp4.example.com
+   58  ll
+   59  htpasswd --help 
+   60  htpasswd -c -B -b sre_team user1 redhat123
+   61  htpasswd  -B -b sre_team user2 redhat123
+   62  cat sre_team 
+   63  ll
+   64  rm -rf sre_team 
+   65  if [ -f src_team ]; then htpasswd -B -b src_team user$x redhat123; else  htpasswd -c -B -b src_team user$x redhat123; fi
+   66  ll
+   67  cat src_team 
+   68  rm -rf sc
+   69  rm -rf src_team 
+   70  ll
+   71  for x in {1..5}; do if [ -f src_team ]; then htpasswd -B -b src_team user$x redhat123; else  htpasswd -c -B -b src_team user$x redhat123; fidone
+   72  for x in {1..5}; do if [ -f src_team ]; then htpasswd -B -b src_team user$x redhat123; else htpasswd -c -B -b src_team user$x redhat123; fi; done
+   73  cat src_team 
+   74  for x in {6..10}; do if [ -f devops_team ]; then htpasswd -B -b devops_team user$x redhat123; else htpasswd -c -B -b devops_team user$x redhat123; fi; done
+   75  ll
+   76  cat devops_team 
+   77  cat src_team 
+   78  for x in {11..30}; do if [ -f application-01_team ]; then htpasswd -B -b application-01_team user$x redhat123; else htpasswd -c -B -b application-01_team user$x redhat123; fi; done
+   79  cat application-01_team 
+   80  for x in {31..50}; do if [ -f application-02_team ]; then htpasswd -B -b application-02_team user$x redhat123; else htpasswd -c -B -b application-02_team user$x redhat123; fi; done
+   81  cat application-02_team 
+   82  for x in {51..70}; do if [ -f application-03_team ]; then htpasswd -B -b application-03_team user$x redhat123; else htpasswd -c -B -b application-03_team user$x redhat123; fi; done
+   83  ll
+   84  oc whoami 
+   85  oc create secret generic sre_team_secret --from-file htpasswd=src_team -n openshift-config 
+   86  oc create secret generic sre-team-secret --from-file htpasswd=src_team -n openshift-config 
+   87  oc get secret -n openshift-config 
+   88  oc create secret generic devops-team-secret --from-file htpasswd=devops_team -n openshift-config 
+   89  oc create secret generic application-01-team-secret --from-file htpasswd=application-01_team -n openshift-config 
+   90  oc create secret generic application-02-team-secret --from-file htpasswd=application-02_team -n openshift-config 
+   91  oc create secret generic application-03-team-secret --from-file htpasswd=application-03_team -n openshift-config 
+   92  oc get secret -n openshift-config 
+   93  oc get secret -n openshift-config | grep team 
+   94  oc get sa
+   95  oc get oauth/cluster -o yaml > oauth.yaml 
+   96  vim oauth.yaml 
+   97  oc replace -f oauth.yaml 
+   98  oc get users
+   99  oc get identity 
+  100  oc login -u user1 -p redhat123
+  101  oc whoami 
+  102  oc get nodes
+  103  oc login -u kubeadmin -p ${_kube_pass} $_api_url 
+  104  oc whoami 
+  105  oc get nodes
+  106  oc get users
+  107  for x in {1..70}
+  108  oc get identity 
+  109  for x in {1..70}; do oc login -u user$x -p redhat123; done
+  110  oc whoami 
+  111  oc login -u kubeadmin -p ${_kube_pass} $_api_url 
+  112  oc whoami 
+  113  oc get users
+  114  oc get identity 
+  115  oc get users | grep sre 
+  116  oc get users | grep devops
+  117  oc get users | grep application-01 
+  118  oc adm groups new sre_team_grp
+  119  oc get groups 
+  120  oc adm groups add-users --help |less
+  121  oc adm groups add-users sre_team_grp user1 user2 user3 user4 user5 
+  122  oc get groups
+  123  oc adm policy add-cluster-role-to-group cluster-admin sre_team_grp 
+  124  oc login -u user1 -p redhat123
+  125  oc whoami 
+  126  oc get nodes
+  127  oc projects | grep kube 
+  128  oc get secret -n kube-system
+  129  oc whoami 
+  130  oc whoami --show-console 
+  131  oc whoami --show-console | grep kubeadmin  
+  132  oc get secret -n kube-system | grep kubeadmin 
+  133  oc delete secrets kubeadmin -n kube-system
+  134  oc get secret -n kube-system | grep kubeadmin 
+  135  history > comm_reference.txt
